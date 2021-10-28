@@ -14,16 +14,16 @@ class _GridBoxState extends State<GridBox> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () {
-          tapped = true;
-          setState(() {});
-        },
-        child: Card(
-          color: Theme.of(context).cardColor,
+    return Card(
+        color: Theme.of(context).cardColor,
+        child: InkWell(
+          onTap: () {
+            tapped = true;
+            setState(() {});
+          },
           child: Container(
-              width: 100,
-              height: 100,
+              width: MediaQuery.of(context).size.width / 4,
+              height: MediaQuery.of(context).size.width / 4,
               child: tapped ? widget.currentPlayer.image : null),
         ));
   }

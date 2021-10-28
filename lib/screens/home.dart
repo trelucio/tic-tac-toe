@@ -23,31 +23,34 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-            Column(
+          child: Padding(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/6),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GridBox(currentPlayer),
-                GridBox(currentPlayer),
-                GridBox(currentPlayer),
-              ],
-            ),
-            Column(
-              children: [
-                GridBox(currentPlayer),
-                GridBox(currentPlayer),
-                GridBox(currentPlayer),
-              ],
-            ),
-            Column(
-              children: [
-                GridBox(currentPlayer),
-                GridBox(currentPlayer),
-                GridBox(currentPlayer),
-              ],
-            ),
-          ]),
+              Column(
+                children: [
+                  GridBox(currentPlayer),
+                  GridBox(currentPlayer),
+                  GridBox(currentPlayer),
+                ],
+              ),
+              Column(
+                children: [
+                  GridBox(currentPlayer),
+                  GridBox(currentPlayer),
+                  GridBox(currentPlayer),
+                ],
+              ),
+              Column(
+                children: [
+                  GridBox(currentPlayer),
+                  GridBox(currentPlayer),
+                  GridBox(currentPlayer),
+                ],
+              ),
+            ]),
+          ),
         ));
   }
 }
