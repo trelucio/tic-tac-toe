@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/models/player.dart';
+import 'package:tic_tac_toe/widgets/grid_box.dart';
+
+import 'screens/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,47 +15,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Tic-Tac-Toe',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
-        primaryColor: Colors.red[100],
-        accentColor: Colors.blue[100],
-        canvasColor: Colors.yellow[50]
-      ),
+          primarySwatch: Colors.pink,
+          primaryColor: Colors.red[200],
+          accentColor: Colors.blue[50],
+          cardColor: Colors.indigo[50],
+          canvasColor: Colors.yellow[50]),
       home: MyHomePage(title: 'Tic-Tac-Toe'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
