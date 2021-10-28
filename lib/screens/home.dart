@@ -14,7 +14,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Player player1 = Player(id: 1, image: Image.asset('assets/donut.png'));
   Player player2 = Player(id: 2, image: Image.asset('assets/pretzel.png'));
-  Player currentPlayer = Player(id: 2, image: Image.asset('assets/donut.png'));
+  Player currentPlayer = Player(id: 1, image: Image.asset('assets/donut.png'));
+
+  Player takeTurns(){
+    Player player = currentPlayer;
+
+    if (currentPlayer.id == 1) currentPlayer = player2;
+    else currentPlayer = player1;
+
+    return player;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,29 +33,29 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Center(
           child: Padding(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/6),
+            padding: EdgeInsets.only(top: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
               Column(
                 children: [
-                  GridBox(currentPlayer),
-                  GridBox(currentPlayer),
-                  GridBox(currentPlayer),
+                  GridBox(takeTurns()),
+                  GridBox(takeTurns()),
+                  GridBox(takeTurns()),
                 ],
               ),
               Column(
                 children: [
-                  GridBox(currentPlayer),
-                  GridBox(currentPlayer),
-                  GridBox(currentPlayer),
+                  GridBox(takeTurns()),
+                  GridBox(takeTurns()),
+                  GridBox(takeTurns()),
                 ],
               ),
               Column(
                 children: [
-                  GridBox(currentPlayer),
-                  GridBox(currentPlayer),
-                  GridBox(currentPlayer),
+                  GridBox(takeTurns()),
+                  GridBox(takeTurns()),
+                  GridBox(takeTurns()),
                 ],
               ),
             ]),

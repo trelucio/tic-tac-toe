@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.red[200],
           accentColor: Colors.purple[50],
           cardColor: Colors.indigo[50],
-          canvasColor: Colors.yellow[50]),
+          canvasColor: Colors.white),
       home: MyHomePage(title: 'Tic-Tac-Toe'),
     );
   }
