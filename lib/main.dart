@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/models/player.dart';
-import 'package:tic_tac_toe/widgets/grid_box.dart';
-
 import 'screens/home.dart';
 
 void main() {
@@ -9,7 +6,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

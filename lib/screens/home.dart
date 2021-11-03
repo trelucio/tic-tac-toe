@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/models/box.dart';
-import 'package:tic_tac_toe/models/player.dart';
-import 'package:tic_tac_toe/widgets/grid_box.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -13,22 +11,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Player player1 = Player(num: 1, image: Image.asset('assets/donut.png'));
-  Player player2 = Player(num: 2, image: Image.asset('assets/pretzel.png'));
-  Player currentPlayer = Player(num: 1, image: Image.asset('assets/donut.png'));
-
-  // THIS SHOULD ONLY BE CALLED WHEN TAPPED BUT GLOBALIZE CURRENT PLAYER
-  // Player takeTurns() {
-  //   if (currentPlayer.id == 1) {
-  //     currentPlayer = player2;
-  //     print(currentPlayer.id);
-  //   } else if (currentPlayer.id == 2) {
-  //     currentPlayer = player1;
-  //     print(currentPlayer.id);
-  //   }
-  //   return currentPlayer;
-  // }
-
   Box box1 = Box(num: 1, tapped: false, img: Image.asset('assets/transparent.png'));
   Box box2 = Box(num: 2, tapped: false, img: Image.asset('assets/transparent.png'));
   Box box3 = Box(num: 3, tapped: false, img: Image.asset('assets/transparent.png'));
@@ -41,7 +23,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int count = 0;
   int player = 0;
 
-  List playerOrder = [1, 2, 1, 2, 1, 2, 1, 2, 1];
   Map playerImage = {
     1: Image.asset('assets/donut.png'),
     2: Image.asset('assets/pretzel.png'),
@@ -62,8 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: InkWell(
           onTap: () {
             box.tapped = true;
-            player = playerOrder[count];
             count += 1;
+            player = count % 2 == 1 ? 1 : 2;
             box.img = playerImage[player];
             setState(() {});
           },
