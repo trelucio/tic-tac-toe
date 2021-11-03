@@ -11,23 +11,35 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Box box1 = Box(num: 1, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box2 = Box(num: 2, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box3 = Box(num: 3, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box4 = Box(num: 4, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box5 = Box(num: 5, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box6 = Box(num: 6, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box7 = Box(num: 7, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box8 = Box(num: 8, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box9 = Box(num: 9, tapped: false, img: Image.asset('assets/transparent.png'));
-  int count = 0;
-  int player = 0;
+  Box box1 =
+      Box(num: 1, tapped: false, img: Image.asset('assets/transparent.png'));
+  Box box2 =
+      Box(num: 2, tapped: false, img: Image.asset('assets/transparent.png'));
+  Box box3 =
+      Box(num: 3, tapped: false, img: Image.asset('assets/transparent.png'));
+  Box box4 =
+      Box(num: 4, tapped: false, img: Image.asset('assets/transparent.png'));
+  Box box5 =
+      Box(num: 5, tapped: false, img: Image.asset('assets/transparent.png'));
+  Box box6 =
+      Box(num: 6, tapped: false, img: Image.asset('assets/transparent.png'));
+  Box box7 =
+      Box(num: 7, tapped: false, img: Image.asset('assets/transparent.png'));
+  Box box8 =
+      Box(num: 8, tapped: false, img: Image.asset('assets/transparent.png'));
+  Box box9 =
+      Box(num: 9, tapped: false, img: Image.asset('assets/transparent.png'));
+  
+  // start with player 1 pretzel
+  int player = 1;
 
   Map playerImage = {
     1: Image.asset('assets/donut.png'),
     2: Image.asset('assets/pretzel.png'),
   };
 
+  // individual grid box widget
+  // state raised: must be in home to see who is current player
   Widget gridBox(Box box) {
     if (box.tapped)
       return Card(
@@ -43,9 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: InkWell(
           onTap: () {
             box.tapped = true;
-            count += 1;
-            player = count % 2 == 1 ? 1 : 2;
             box.img = playerImage[player];
+            player = player == 1 ? 2 : 1;
             setState(() {});
           },
           child: Container(
