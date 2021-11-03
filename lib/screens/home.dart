@@ -29,7 +29,6 @@ class _MyHomePageState extends State<MyHomePage> {
       Box(num: 8, tapped: false, img: Image.asset('assets/transparent.png'));
   Box box9 =
       Box(num: 9, tapped: false, img: Image.asset('assets/transparent.png'));
-
   // start with player 1 pretzel
   int player = 1;
 
@@ -66,6 +65,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       );
     }
+  }
+
+  void clear() {
+    List boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9];
+    boxes.forEach((box) {
+      box.tapped = false;
+      box.img = Image.asset('assets/transparent.png');
+      setState(() {});
+    });
   }
 
   @override
@@ -116,39 +124,48 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Center(
-          child: Container(
-            padding: EdgeInsets.only(top: 20),
-            child: Stack(children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Column(
-                  children: [
-                    gridBox(box1),
-                    gridBox(box2),
-                    gridBox(box3),
-                  ],
-                ),
-                Column(
-                  children: [
-                    gridBox(box4),
-                    gridBox(box5),
-                    gridBox(box6),
-                  ],
-                ),
-                Column(
-                  children: [
-                    gridBox(box7),
-                    gridBox(box8),
-                    gridBox(box9),
-                  ],
-                ),
-              ]),
-              winner(),
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Container(
+          padding: EdgeInsets.only(top: 20),
+          child: Stack(children: [
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Column(
+                children: [
+                  gridBox(box1),
+                  gridBox(box2),
+                  gridBox(box3),
+                ],
+              ),
+              Column(
+                children: [
+                  gridBox(box4),
+                  gridBox(box5),
+                  gridBox(box6),
+                ],
+              ),
+              Column(
+                children: [
+                  gridBox(box7),
+                  gridBox(box8),
+                  gridBox(box9),
+                ],
+              ),
             ]),
-          ),
-        ));
+            winner(),
+          ]),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          clear();
+        },
+        backgroundColor: Theme.of(context).accentColor,
+        tooltip: 'New game',
+        child: Icon(Icons.restart_alt)
+      ),
+    );
   }
 }
