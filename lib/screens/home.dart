@@ -13,22 +13,46 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Box box1 =
       Box(num: 1, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box2 =
-      Box(num: 2, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box3 =
-      Box(num: 3, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box4 =
-      Box(num: 4, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box5 =
-      Box(num: 5, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box6 =
-      Box(num: 6, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box7 =
-      Box(num: 7, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box8 =
-      Box(num: 8, tapped: false, img: Image.asset('assets/transparent.png'));
-  Box box9 =
-      Box(num: 9, tapped: false, img: Image.asset('assets/transparent.png'));
+  Box box2 = Box(
+    num: 2,
+    tapped: false,
+    img: Image.asset('assets/transparent.png'),
+  );
+  Box box3 = Box(
+    num: 3,
+    tapped: false,
+    img: Image.asset('assets/transparent.png'),
+  );
+  Box box4 = Box(
+    num: 4,
+    tapped: false,
+    img: Image.asset('assets/transparent.png'),
+  );
+  Box box5 = Box(
+    num: 5,
+    tapped: false,
+    img: Image.asset('assets/transparent.png'),
+  );
+  Box box6 = Box(
+    num: 6,
+    tapped: false,
+    img: Image.asset('assets/transparent.png'),
+  );
+  Box box7 = Box(
+    num: 7,
+    tapped: false,
+    img: Image.asset('assets/transparent.png'),
+  );
+  Box box8 = Box(
+    num: 8,
+    tapped: false,
+    img: Image.asset('assets/transparent.png'),
+  );
+  Box box9 = Box(
+    num: 9,
+    tapped: false,
+    img: Image.asset('assets/transparent.png'),
+  );
   // start with player 1 pretzel
   int player = 1;
 
@@ -78,50 +102,59 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Image baguette = Image.asset(
+      'assets/baguette.png',
+      fit: BoxFit.fill,
+    );
     Widget winner() {
       if (box1.img == box2.img && box2.img == box3.img)
         return Container(
-            alignment: Alignment.topLeft,
-            child: Image.asset('assets/baguette.png'));
+            height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            alignment: Alignment.centerLeft,
+            child: baguette);
       else if (box4.img == box5.img && box5.img == box6.img) {
         return Container(
+            height: 1.5 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.center,
-            child: Image.asset('assets/baguette.png'));
+            child: baguette);
       } else if (box7.img == box8.img && box8.img == box9.img) {
         return Container(
-            alignment: Alignment.topRight,
-            child: Image.asset('assets/baguette.png'));
+            height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            alignment: Alignment.centerRight,
+            child: baguette);
       } else if (box1.img == box4.img && box4.img == box7.img) {
         return Container(
+            height: 1.25 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.topCenter,
-            child: RotatedBox(
-                quarterTurns: 1, child: Image.asset('assets/baguette.png')));
+            child: RotatedBox(quarterTurns: 1, child: baguette));
       } else if (box2.img == box5.img && box5.img == box8.img) {
         return Container(
+            height: 1.25 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.center,
-            child: RotatedBox(
-                quarterTurns: 1, child: Image.asset('assets/baguette.png')));
+            child: RotatedBox(quarterTurns: 1, child: baguette));
       } else if (box3.img == box6.img && box6.img == box9.img) {
         return Container(
+            height: 1.25 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.bottomCenter,
-            child: RotatedBox(
-                quarterTurns: 1, child: Image.asset('assets/baguette.png')));
+            child: RotatedBox(quarterTurns: 1, child: baguette));
       } else if (box1.img == box5.img && box5.img == box9.img) {
         return Container(
+          height: 1.5 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.topCenter,
-            child: Transform.rotate(
-                angle: 3.14159 / 180 * 135,
-                child: Image.asset('assets/baguette.png')));
+            child:
+                Transform.rotate(angle: 3.14159 / 180 * 135, child: baguette));
       } else if (box3.img == box5.img && box5.img == box7.img) {
         return Container(
+          height: 1.5 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.topCenter,
-            child: Transform.rotate(
-                angle: 3.14159 / 180 * 45,
-                child: Image.asset('assets/baguette.png')));
+            child:
+                Transform.rotate(angle: 3.14159 / 180 * 45, child: baguette));
       }
 
       return Container();
     }
+
+    print(MediaQuery.of(context).size.height);
 
     return Scaffold(
       appBar: AppBar(
@@ -129,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          padding: EdgeInsets.only(top: 20),
+          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
           child: Stack(children: [
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Column(
@@ -159,13 +192,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          clear();
-        },
-        backgroundColor: Theme.of(context).accentColor,
-        tooltip: 'New game',
-        child: Icon(Icons.restart_alt)
-      ),
+          onPressed: () {
+            clear();
+          },
+          backgroundColor: Theme.of(context).accentColor,
+          tooltip: 'New game',
+          child: Icon(Icons.restart_alt)),
     );
   }
 }
