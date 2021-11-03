@@ -30,6 +30,9 @@ class MyApp extends StatelessWidget {
                 fontStyle: FontStyle.italic,
                 fontSize: 24,
               ),
+              bodyText1: TextStyle(
+                fontSize: 24,
+              ),
               button: TextStyle(
                 color: Colors.grey[900],
                 fontSize: 20,

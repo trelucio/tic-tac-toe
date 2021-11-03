@@ -165,7 +165,10 @@ class _TicTacToeState extends State<TicTacToe> {
 
     Widget winMessage() {
       player = player == 1 ? 2 : 1;
-      return Text('Player $player wins!');
+      return Text(
+        'Player $player wins!',
+        style: Theme.of(context).textTheme.bodyText1,
+      );
     }
 
     // IF ALL ARE FILLED AND WIN IS FALSE: WRITE DRAW
@@ -174,7 +177,8 @@ class _TicTacToeState extends State<TicTacToe> {
       boxes.forEach((box) {
         if (box.tapped) count++;
       });
-      if (count == 9) return Text('Draw!');
+      if (count == 9)
+        return Text('Draw!', style: Theme.of(context).textTheme.bodyText1);
       return Text('');
     }
 
