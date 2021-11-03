@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/models/box.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
+class TicTacToe extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _TicTacToeState createState() => _TicTacToeState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _TicTacToeState extends State<TicTacToe> {
   Box box1 =
       Box(num: 1, tapped: false, img: Image.asset('assets/transparent.png'));
   Box box2 = Box(
@@ -159,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Tic-Tac-Toe'),
       ),
       body: Container(
         child: Stack(children: [
