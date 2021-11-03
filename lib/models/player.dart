@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Player {
-  int id;
+  int num;
   Image image;
 
-  Player({this.id = 0, required this.image});
+  Player({this.num = 0, required this.image});
 }
