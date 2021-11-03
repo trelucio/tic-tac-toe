@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/screens/instructions.dart';
-import 'screens/tictactoe.dart';
 
 void main() {
   runApp(MyApp());
