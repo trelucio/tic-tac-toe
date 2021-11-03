@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.pink,
           primaryColor: Colors.red[200],
-          accentColor: Colors.purple[50],
+          accentColor: Colors.purple[100],
           cardColor: Colors.indigo[50],
           canvasColor: Colors.white),
       home: MyHomePage(title: 'Tic-Tac-Toe'),

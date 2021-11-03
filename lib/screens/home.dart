@@ -57,8 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int player = 1;
 
   Map playerImage = {
-    1: Image.asset('assets/donut.png'),
-    2: Image.asset('assets/pretzel.png'),
+    1: Image.asset('assets/pretzel.png'),
+    2: Image.asset('assets/donut.png'),
   };
 
   // individual grid box widget
@@ -96,100 +96,98 @@ class _MyHomePageState extends State<MyHomePage> {
     boxes.forEach((box) {
       box.tapped = false;
       box.img = Image.asset('assets/transparent.png');
+      player = 1;
       setState(() {});
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    Image baguette = Image.asset(
-      'assets/baguette.png',
-      fit: BoxFit.fill,
-    );
+    Image baguette = Image.asset('assets/baguette.png');
     Widget winner() {
       if (box1.img == box2.img && box2.img == box3.img)
         return Container(
-            height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            width: 2 * (MediaQuery.of(context).size.height / 4),
+            height: 2 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.centerLeft,
             child: baguette);
       else if (box4.img == box5.img && box5.img == box6.img) {
         return Container(
-            height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            width: 2 * (MediaQuery.of(context).size.height / 4),
+            height: 2 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.center,
             child: baguette);
       } else if (box7.img == box8.img && box8.img == box9.img) {
         return Container(
-            height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            width: 2 * (MediaQuery.of(context).size.height / 4),
+            height: 2 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.centerRight,
             child: baguette);
       } else if (box1.img == box4.img && box4.img == box7.img) {
         return Container(
-            height: 1.25 * (MediaQuery.of(context).size.height / 4),
+            height: (MediaQuery.of(context).size.width / 4),
+            width: 2 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.topCenter,
             child: RotatedBox(quarterTurns: 1, child: baguette));
       } else if (box2.img == box5.img && box5.img == box8.img) {
         return Container(
-            height: 1.25 * (MediaQuery.of(context).size.height / 4),
+            height: 3 * (MediaQuery.of(context).size.width / 4),
+            width: 2 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.center,
             child: RotatedBox(quarterTurns: 1, child: baguette));
       } else if (box3.img == box6.img && box6.img == box9.img) {
         return Container(
-            height: 1.25 * (MediaQuery.of(context).size.height / 4),
+            height: 3 * (MediaQuery.of(context).size.width / 4),
+            width: 2 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.bottomCenter,
             child: RotatedBox(quarterTurns: 1, child: baguette));
       } else if (box1.img == box5.img && box5.img == box9.img) {
         return Container(
-          height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            height: 2 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.topCenter,
             child:
                 Transform.rotate(angle: 3.14159 / 180 * 135, child: baguette));
       } else if (box3.img == box5.img && box5.img == box7.img) {
         return Container(
-          height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            height: 2 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.topCenter,
             child:
                 Transform.rotate(angle: 3.14159 / 180 * 45, child: baguette));
       }
-
       return Container();
     }
-
-    print(MediaQuery.of(context).size.height);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Container(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
-          child: Stack(children: [
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Column(
-                children: [
-                  gridBox(box1),
-                  gridBox(box2),
-                  gridBox(box3),
-                ],
-              ),
-              Column(
-                children: [
-                  gridBox(box4),
-                  gridBox(box5),
-                  gridBox(box6),
-                ],
-              ),
-              Column(
-                children: [
-                  gridBox(box7),
-                  gridBox(box8),
-                  gridBox(box9),
-                ],
-              ),
-            ]),
-            winner(),
+      body: Container(
+        child: Stack(children: [
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Column(
+              children: [
+                gridBox(box1),
+                gridBox(box2),
+                gridBox(box3),
+              ],
+            ),
+            Column(
+              children: [
+                gridBox(box4),
+                gridBox(box5),
+                gridBox(box6),
+              ],
+            ),
+            Column(
+              children: [
+                gridBox(box7),
+                gridBox(box8),
+                gridBox(box9),
+              ],
+            ),
           ]),
-        ),
+          Container(alignment: Alignment.topCenter, child: winner()),
+        ]),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
