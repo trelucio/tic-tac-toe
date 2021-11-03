@@ -130,6 +130,7 @@ class _TicTacToeState extends State<TicTacToe> {
       } else if (box1.img == box4.img && box4.img == box7.img) {
         win = true;
         return Container(
+            padding: EdgeInsets.only(top: 16),
             width: 1.5 * (MediaQuery.of(context).size.height / 4),
             alignment: Alignment.topCenter,
             child: RotatedBox(quarterTurns: 1, child: baguette));
