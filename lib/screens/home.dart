@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
       Box(num: 8, tapped: false, img: Image.asset('assets/transparent.png'));
   Box box9 =
       Box(num: 9, tapped: false, img: Image.asset('assets/transparent.png'));
-  
+
   // start with player 1 pretzel
   int player = 1;
 
@@ -70,38 +70,85 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget winner() {
+      if (box1.img == box2.img && box2.img == box3.img)
+        return Container(
+            alignment: Alignment.topLeft,
+            child: Image.asset('assets/baguette.png'));
+      else if (box4.img == box5.img && box5.img == box6.img) {
+        return Container(
+            alignment: Alignment.center,
+            child: Image.asset('assets/baguette.png'));
+      } else if (box7.img == box8.img && box8.img == box9.img) {
+        return Container(
+            alignment: Alignment.topRight,
+            child: Image.asset('assets/baguette.png'));
+      } else if (box1.img == box4.img && box4.img == box7.img) {
+        return Container(
+            alignment: Alignment.topCenter,
+            child: RotatedBox(
+                quarterTurns: 1, child: Image.asset('assets/baguette.png')));
+      } else if (box2.img == box5.img && box5.img == box8.img) {
+        return Container(
+            alignment: Alignment.center,
+            child: RotatedBox(
+                quarterTurns: 1, child: Image.asset('assets/baguette.png')));
+      } else if (box3.img == box6.img && box6.img == box9.img) {
+        return Container(
+            alignment: Alignment.bottomCenter,
+            child: RotatedBox(
+                quarterTurns: 1, child: Image.asset('assets/baguette.png')));
+      } else if (box1.img == box5.img && box5.img == box9.img) {
+        return Container(
+            alignment: Alignment.topCenter,
+            child: Transform.rotate(
+                angle: 3.14159 / 180 * 135,
+                child: Image.asset('assets/baguette.png')));
+      } else if (box3.img == box5.img && box5.img == box7.img) {
+        return Container(
+            alignment: Alignment.topCenter,
+            child: Transform.rotate(
+                angle: 3.14159 / 180 * 45,
+                child: Image.asset('assets/baguette.png')));
+      }
+
+      return Container();
+    }
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.only(top: 20),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Column(
-              children: [
-                gridBox(box1),
-                gridBox(box2),
-                gridBox(box3),
-              ],
-            ),
-            Column(
-              children: [
-                gridBox(box4),
-                gridBox(box5),
-                gridBox(box6),
-              ],
-            ),
-            Column(
-              children: [
-                gridBox(box7),
-                gridBox(box8),
-                gridBox(box9),
-              ],
-            ),
-          ]),
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-    );
+        body: Center(
+          child: Container(
+            padding: EdgeInsets.only(top: 20),
+            child: Stack(children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Column(
+                  children: [
+                    gridBox(box1),
+                    gridBox(box2),
+                    gridBox(box3),
+                  ],
+                ),
+                Column(
+                  children: [
+                    gridBox(box4),
+                    gridBox(box5),
+                    gridBox(box6),
+                  ],
+                ),
+                Column(
+                  children: [
+                    gridBox(box7),
+                    gridBox(box8),
+                    gridBox(box9),
+                  ],
+                ),
+              ]),
+              winner(),
+            ]),
+          ),
+        ));
   }
 }
