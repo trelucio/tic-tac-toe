@@ -11,6 +11,7 @@ class _TicTacToeState extends State<TicTacToe> {
   int player = 1; // player 1 goes first (pretzel)
   bool win = false; // no one has won yet
 
+  // initialize individual Box objects (holds X and O)
   Box box1 = Box(
     num: 1,
     tapped: false,
@@ -57,6 +58,7 @@ class _TicTacToeState extends State<TicTacToe> {
     img: Image.asset('assets/transparent.png'),
   );
 
+  // maps player number to their designated image
   Map playerImage = {
     1: Image.asset('assets/pretzel.png'),
     2: Image.asset('assets/donut.png'),
@@ -82,15 +84,15 @@ class _TicTacToeState extends State<TicTacToe> {
             setState(() {});
           },
           child: Container(
-              width: MediaQuery.of(context).size.width / 4,
-              height: MediaQuery.of(context).size.width / 4,
+              width: width,
+              height: width,
               child: box.img),
         ),
       );
     }
   }
 
-  // Restart game
+  // Restart game by clearing boxes
   void clear(List boxes) {
     boxes.forEach((box) {
       box.tapped = false;
@@ -103,10 +105,11 @@ class _TicTacToeState extends State<TicTacToe> {
 
   @override
   Widget build(BuildContext context) {
+    // width and height as designated
     double width = MediaQuery.of(context).size.width / 4;
     double height = MediaQuery.of(context).size.height / 4;
 
-    // Winner Baguette
+    // Shows winner and formats it depending on which way won
     Widget winner() {
       Image baguette = Image.asset('assets/baguette.png');
       if (box1.img == box2.img && box2.img == box3.img) {
@@ -176,6 +179,7 @@ class _TicTacToeState extends State<TicTacToe> {
       return Container();
     }
 
+    // list of boxes
     List boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9];
 
     return Scaffold(
@@ -185,6 +189,7 @@ class _TicTacToeState extends State<TicTacToe> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          // build tic-tac-toe grid
           Container(
             child: Stack(children: [
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -210,12 +215,14 @@ class _TicTacToeState extends State<TicTacToe> {
                   ],
                 ),
               ]),
+              // draw baguette over the grids in which player won
               Container(alignment: Alignment.topCenter, child: winner()),
             ]),
           ),
-          Results(boxes, player, win)
+          Results(boxes, player, win) // display results if someone won or if draw
         ],
       ),
+      // FAB to restart game by clearing boxes of images
       floatingActionButton: FloatingActionButton(
           onPressed: () => clear(boxes),
           backgroundColor: Theme.of(context).accentColor,

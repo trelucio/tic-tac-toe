@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// displays winner of the game or if there's a draw
 class Results extends StatelessWidget {
   final List boxes;
   final int player;
@@ -9,6 +10,7 @@ class Results extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // if there's a definitive winner based on win bool then display winner
     Widget winMessage(int player) {
       player = player == 1 ? 2 : 1;
       return Text(
@@ -17,7 +19,7 @@ class Results extends StatelessWidget {
       );
     }
 
-    // IF ALL ARE FILLED AND WIN IS FALSE: WRITE DRAW
+    // if all boxes are filled and no one one -> draw
     Widget drawMessage(List boxes) {
       int count = 0;
       boxes.forEach((box) {

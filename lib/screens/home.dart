@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/screens/tictactoe.dart';
 
-class Instructions extends StatelessWidget {
+// Landing page for tic-tac-toe; includes start game button
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +20,7 @@ class Instructions extends StatelessWidget {
             ],
           ),
         ),
+        // List tiles to show players that pretzels are X's and donuts are O's
         Container(
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: Column(
@@ -42,10 +44,12 @@ class Instructions extends StatelessWidget {
             ],
           ),
         ),
+        // Button to go to game
         Container(
             alignment: Alignment.bottomCenter,
             child: ElevatedButton(
                 style: Theme.of(context).elevatedButtonTheme.style,
+                // go to main tic-tac-toe game
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => TicTacToe()));

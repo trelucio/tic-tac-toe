@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/screens/instructions.dart';
+import 'package:tic_tac_toe/screens/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
                 fontSize: 20,
               ),
             )),
-        home: Instructions());
+        // home page is landing page to start game
+        home: Home());
   }
 }
