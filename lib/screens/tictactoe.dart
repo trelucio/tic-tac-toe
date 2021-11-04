@@ -150,19 +150,28 @@ class _TicTacToeState extends State<TicTacToe> {
             height: 3 * width,
             width: 1.5 * height,
             alignment: Alignment.bottomCenter,
-            child: RotatedBox(quarterTurns: 1, child: baguette));
+            child: RotatedBox(
+              quarterTurns: 1,
+              child: baguette,
+            ));
       } else if (box1.img == box5.img && box5.img == box9.img) {
         win = true;
         return Container(
             height: 1.5 * height,
             alignment: Alignment.topCenter,
-            child: Transform.rotate(angle: 3.14 / 180 * 135, child: baguette));
+            child: Transform.rotate(
+              angle: 3.14 / 180 * 135,
+              child: baguette,
+            ));
       } else if (box3.img == box5.img && box5.img == box7.img) {
         win = true;
         return Container(
             height: 1.5 * height,
             alignment: Alignment.topCenter,
-            child: Transform.rotate(angle: 3.14 / 180 * 45, child: baguette));
+            child: Transform.rotate(
+              angle: 3.14 / 180 * 45,
+              child: baguette,
+            ));
       }
       return Container();
     }

@@ -5,6 +5,7 @@ class Instructions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[50],
         body: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -31,7 +32,7 @@ class Instructions extends StatelessWidget {
                         style: Theme.of(context).textTheme.subtitle2,
                       ))),
               Card(
-                  color: Colors.amber[50],
+                  color: Colors.orange[50],
                   child: ListTile(
                       leading: Image.asset('assets/donut.png'),
                       title: Text(
