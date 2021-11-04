@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
             cardColor: Colors.indigo[50],
             canvasColor: Colors.white,
             elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ElevatedButton.styleFrom(primary: Colors.indigo[100]),
+              style: ElevatedButton.styleFrom(primary: Colors.indigo[200]),
             ),
             textTheme: TextTheme(
               headline1: TextStyle(
@@ -30,11 +30,14 @@ class MyApp extends StatelessWidget {
                 fontStyle: FontStyle.italic,
                 fontSize: 24,
               ),
+              subtitle2: TextStyle(
+                fontSize: 20,
+              ),
               bodyText1: TextStyle(
                 fontSize: 24,
               ),
               button: TextStyle(
-                color: Colors.grey[900],
+                color: Colors.black,
                 fontSize: 20,
               ),
             )),

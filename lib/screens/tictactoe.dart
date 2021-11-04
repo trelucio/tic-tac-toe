@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/models/box.dart';
+import 'package:tic_tac_toe/widgets/results.dart';
 
 class TicTacToe extends StatefulWidget {
   @override
@@ -64,13 +65,11 @@ class _TicTacToeState extends State<TicTacToe> {
   // individual grid box widget
   // state raised: must be in home to see who is current player
   Widget gridBox(Box box) {
+    double width = MediaQuery.of(context).size.width / 4;
     if (box.tapped || win == true)
       return Card(
         color: Theme.of(context).cardColor,
-        child: Container(
-            width: MediaQuery.of(context).size.width / 4,
-            height: MediaQuery.of(context).size.width / 4,
-            child: box.img),
+        child: Container(width: width, height: width, child: box.img),
       );
     else {
       return Card(
@@ -104,83 +103,68 @@ class _TicTacToeState extends State<TicTacToe> {
 
   @override
   Widget build(BuildContext context) {
-    Image baguette = Image.asset('assets/baguette.png');
+    double width = MediaQuery.of(context).size.width / 4;
+    double height = MediaQuery.of(context).size.height / 4;
+
+    // Winner Baguette
     Widget winner() {
+      Image baguette = Image.asset('assets/baguette.png');
       if (box1.img == box2.img && box2.img == box3.img) {
         win = true;
         return Container(
-            width: 2.5 * (MediaQuery.of(context).size.width / 4),
-            height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            width: 2.5 * width,
+            height: 1.5 * height,
             alignment: Alignment.centerLeft,
             child: baguette);
       } else if (box4.img == box5.img && box5.img == box6.img) {
         win = true;
         return Container(
-            width: 2.5 * (MediaQuery.of(context).size.height / 4),
-            height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            width: 2.5 * height,
+            height: 1.5 * height,
             alignment: Alignment.center,
             child: baguette);
       } else if (box7.img == box8.img && box8.img == box9.img) {
         win = true;
         return Container(
-            width: 2.5 * (MediaQuery.of(context).size.width / 4),
-            height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            width: 2.5 * width,
+            height: 1.5 * height,
             alignment: Alignment.centerRight,
             child: baguette);
       } else if (box1.img == box4.img && box4.img == box7.img) {
         win = true;
         return Container(
             padding: EdgeInsets.only(top: 16),
-            width: 1.5 * (MediaQuery.of(context).size.height / 4),
+            width: 1.5 * height,
             alignment: Alignment.topCenter,
             child: RotatedBox(quarterTurns: 1, child: baguette));
       } else if (box2.img == box5.img && box5.img == box8.img) {
         win = true;
         return Container(
-            height: 3 * (MediaQuery.of(context).size.width / 4),
-            width: 1.5 * (MediaQuery.of(context).size.height / 4),
+            height: 3 * width,
+            width: 1.5 * height,
             alignment: Alignment.center,
             child: RotatedBox(quarterTurns: 1, child: baguette));
       } else if (box3.img == box6.img && box6.img == box9.img) {
         win = true;
         return Container(
-            height: 3 * (MediaQuery.of(context).size.width / 4),
-            width: 1.5 * (MediaQuery.of(context).size.height / 4),
+            height: 3 * width,
+            width: 1.5 * height,
             alignment: Alignment.bottomCenter,
             child: RotatedBox(quarterTurns: 1, child: baguette));
       } else if (box1.img == box5.img && box5.img == box9.img) {
         win = true;
         return Container(
-            height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            height: 1.5 * height,
             alignment: Alignment.topCenter,
             child: Transform.rotate(angle: 3.14 / 180 * 135, child: baguette));
       } else if (box3.img == box5.img && box5.img == box7.img) {
         win = true;
         return Container(
-            height: 1.5 * (MediaQuery.of(context).size.height / 4),
+            height: 1.5 * height,
             alignment: Alignment.topCenter,
             child: Transform.rotate(angle: 3.14 / 180 * 45, child: baguette));
       }
       return Container();
-    }
-
-    Widget winMessage() {
-      player = player == 1 ? 2 : 1;
-      return Text(
-        'Player $player wins!',
-        style: Theme.of(context).textTheme.bodyText1,
-      );
-    }
-
-    // IF ALL ARE FILLED AND WIN IS FALSE: WRITE DRAW
-    Widget drawMessage(List boxes) {
-      int count = 0;
-      boxes.forEach((box) {
-        if (box.tapped) count++;
-      });
-      if (count == 9)
-        return Text('Draw!', style: Theme.of(context).textTheme.bodyText1);
-      return Text('');
     }
 
     List boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9];
@@ -220,7 +204,7 @@ class _TicTacToeState extends State<TicTacToe> {
               Container(alignment: Alignment.topCenter, child: winner()),
             ]),
           ),
-          Container(child: win ? winMessage() : drawMessage(boxes))
+          Results(boxes, player, win)
         ],
       ),
       floatingActionButton: FloatingActionButton(

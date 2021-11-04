@@ -26,17 +26,18 @@ class Instructions extends StatelessWidget {
                   color: Colors.pink[50],
                   child: ListTile(
                       leading: Image.asset('assets/pretzel.png'),
-                      title: Text('Player 1'))),
+                      title: Text(
+                        'Player 1 (X)',
+                        style: Theme.of(context).textTheme.subtitle2,
+                      ))),
               Card(
-                  color: Colors.yellow[50],
+                  color: Colors.amber[50],
                   child: ListTile(
                       leading: Image.asset('assets/donut.png'),
-                      title: Text('Player 2'))),
-              Card(
-                  color: Colors.purple[50],
-                  child: ListTile(
-                      leading: Image.asset('assets/baguette.png'),
-                      title: Text('Win!'))),
+                      title: Text(
+                        'Player 2 (O)',
+                        style: Theme.of(context).textTheme.subtitle2,
+                      ))),
             ],
           ),
         ),
